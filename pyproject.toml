@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-database"
+version = "2025.9.0"
+description = "Sistema de banco de dados simplificado, feito do zero para fins educativos."
+dependencies = []
+requires-python = ">=3.11"
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3.11"]
+
+[project.urls]
+Homepage = "https://sourceunion.github.io/my-database"
+Repository = "https://github.com/sourceunion/my-database.git"
+Issues = "https://github.com/sourceunion/my-database/issues"
+
+[project.optional-dependencies]
+lint = ["flake8"]
+dev = ["mypy"]
