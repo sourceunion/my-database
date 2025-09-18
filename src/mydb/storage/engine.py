@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class StorageEngine(ABC):
     @abstractmethod
-    def set(self):
+    def set(self, key: bytes, value: bytes) -> None:
         raise NotImplementedError
 
     @abstractmethod
