@@ -7,7 +7,7 @@ class StorageEngine(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get(self):
+    def get(self, key: bytes):
         raise NotImplementedError
 
     @abstractmethod
