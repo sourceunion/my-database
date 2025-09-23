@@ -57,3 +57,21 @@ class AppendOnlyLogStorage(StorageEngine):
         key_data, value_data = line_payload[:key_size], line_payload[key_size:]
 
         return key_data, value_data
+
+    TOMBSTONE = b"__TOMBSTONE__"
+
+    def get(self, key: bytes) -> tuple[bytes, bytes] | None:
+        last_value = None
+
+        with open(self.filepath, "rb") as f:
+            for line in f.readlines():
+                line = line.rstrip(b"\n")
+                line_values = self.read_line(line)
+
+                if line_values[0] == key:
+                    last_value = line_values[1]
+
+        if last_value is None or last_value == self.TOMBSTONE:
+            return None
+
+        return key, last_value
